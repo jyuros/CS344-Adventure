@@ -35,6 +35,25 @@ struct room {
     char type[20];
 };
 
+// generates a random number between 2 numbers (inclusive)
+int genRandom(int lowerBound, int upperBound){
+    int result=0;
+    int low = 0;
+    int high = 0;
+    
+    if(lowerBound < upperBound) {
+        low = lowerBound;
+        high = upperBound + 1;
+    }
+    else {
+        low = upperBound;
+        high = lowerBound + 1;
+    }
+    
+    result = (rand()%(high-low))+low;
+    return result;
+}
+
 void printRoom(struct room* r){
     
     printf("CURRENT LOCATION: %s\n", r->name);
@@ -130,27 +149,6 @@ struct room* findStart(struct room* r) {
         }
     }
 }
-
-
-// generates a random number between 2 numbers (inclusive)
-int genRandom(int lowerBound, int upperBound){
-    int result=0;
-    int low = 0;
-    int high = 0;
-    
-    if(lowerBound < upperBound) {
-        low = lowerBound;
-        high = upperBound + 1;
-    }
-    else {
-        low = upperBound;
-        high = lowerBound + 1;
-    }
-    
-    result = (rand()%(high-low))+low;
-    return result;
-}
-
 
 struct room* createRooms(){
     
